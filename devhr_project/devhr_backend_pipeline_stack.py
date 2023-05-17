@@ -12,6 +12,9 @@ from aws_cdk import (
 )
 from constructs import Construct
 
+from devhr_project.pipeline_stage import DevhrPipelineStage
+
+
 class DevhrBackendPipelineStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
@@ -35,6 +38,7 @@ class DevhrBackendPipelineStack(Stack):
             cross_account_keys=False,
         )
         
-        
+        deploy = DevhrPipelineStage(self, "Deploy")
+        deploy_stage = pipeline.add_stage(deploy)        
         
         
