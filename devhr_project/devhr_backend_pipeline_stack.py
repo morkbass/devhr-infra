@@ -17,11 +17,7 @@ class DevhrBackendPipelineStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
         
-        #source_artifact = codepipeline.Artifact(),
-        #cloud_assembly_artifact = codepipeline.Artifact
         
-        #github_owner = ssm.StringParameter.from_string_parameter_attributes(self, "github_owner",parameter_name="devhour-backend-github-owner").string_value,
-        #github_repo = ssm.StringParameter.from_string_parameter_attributes(self, "github_repo",parameter_name="devhour-backend-github-repo").string_value,
         #github_branch = ssm.StringParameter.from_string_parameter_attributes(self, "github_branch",parameter_name="devhour-backend-github-branch").string_value,
         
         pipeline = pipelines.CodePipeline(self, "Pipeline",
@@ -38,5 +34,7 @@ class DevhrBackendPipelineStack(Stack):
             ),
             cross_account_keys=False,
         )
+        
+        
         
         
