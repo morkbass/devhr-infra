@@ -27,9 +27,14 @@ class DevhrBackendPipelineStack(Stack):
         pipeline = pipelines.CodePipeline(self, "Pipeline",
             pipeline_name="devhr",
             synth=pipelines.ShellStep("Synth",
-                input = pipelines.CodePipelineSource.connection('morkbass/devhr-infra', 'main',
+                input = pipelines.CodePipelineSource.connection('morkbass/devhr-infra', 'master',
                     connection_arn='arn:aws:codestar-connections:us-east-1:075341441208:connection/8f80c0a9-39ff-4f30-be7b-4b57addce22d'),
-                commands=[ "cd devhr-infra && npx cdk synth"]
+                commands=[
+                    "ls -ll && pwd",
+                    "npm install -g aws-cdk",  # Installs the cdk cli on Codebuild
+                    "pip install -r requirements.txt",  # Instructs Codebuild to install required packages
+                    "npx cdk synth",
+                ]
             ),
             cross_account_keys=False,
         )
