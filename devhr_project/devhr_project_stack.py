@@ -296,8 +296,7 @@ class DevhrProjectStack(Stack):
         imageBucket.add_object_created_notification(s3n.SqsDestination(queue), s3.NotificationKeyFilter(prefix="private/"))
         
         rekFn.add_event_source(lambda_event_sources.SqsEventSource(queue))
-
-    
+        
         CfnOutput(self, "imageBucketOutput", value=imageBucket.bucket_name)
         CfnOutput(self, "dynamoTable", value=dynamoTable.table_name)
         CfnOutput(self, "imageBucketResizedOutput", value=resizedBucket.bucket_name)
