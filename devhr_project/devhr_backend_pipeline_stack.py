@@ -24,7 +24,7 @@ class DevhrBackendPipelineStack(Stack):
         #github_branch = ssm.StringParameter.from_string_parameter_attributes(self, "github_branch",parameter_name="devhour-backend-github-branch").string_value,
         
         pipeline = pipelines.CodePipeline(self, "Pipeline",
-            pipeline_name="devhr",
+            #pipeline_name="devhr",
             synth=pipelines.ShellStep("Synth",
                 input = pipelines.CodePipelineSource.connection('morkbass/devhr-infra', 'master',
                     connection_arn='arn:aws:codestar-connections:us-east-1:075341441208:connection/8f80c0a9-39ff-4f30-be7b-4b57addce22d'),
