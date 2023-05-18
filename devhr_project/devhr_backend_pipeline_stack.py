@@ -38,7 +38,8 @@ class DevhrBackendPipelineStack(Stack):
             cross_account_keys=False,
         )
         
-        deploy = DevhrPipelineStage(self, "Deploy")
-        deploy_stage = pipeline.add_stage(deploy)        
+        testing_stage = pipeline.add_stage(DevhrPipelineStage(self, "Testing"))
+         
+        testing_stage.add_post(pipelines.ManualApprovalStep('approval'))
         
         
