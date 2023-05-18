@@ -12,13 +12,3 @@ class DevhrPipelineStage(Stage):
 
         DevhrProjectStack(self, 'dev')
 
-        
-        
-
-
-        
-        
-
-        
-        
-cdkreknimagebucketresizedB7E2734B
