@@ -1,9 +1,8 @@
 from aws_cdk import (
-    Stack,
-    Stage,
+    Stage
 )
 from constructs import Construct
-from devhr_project_stack import DevhrProjectStack
+from .devhr_project_stack import DevhrProjectStack
 
 
 class DevhrPipelineStage(Stage):
@@ -11,7 +10,7 @@ class DevhrPipelineStage(Stage):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        devhrStack = DevhrProjectStack(self, 'DevhrStack')
+        service = DevhrProjectStack(self, 'WebService')
 
         
         
