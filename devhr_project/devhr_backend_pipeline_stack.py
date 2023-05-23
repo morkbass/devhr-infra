@@ -40,6 +40,6 @@ class DevhrBackendPipelineStack(Stack):
         
         devStage = pipeline.add_stage(DevhrPipelineStage(self, "dev"))
          
-        devStage.add_post(pipelines.ManualApprovalStep('approval'))
+        devStage.add_pre(pipelines.ManualApprovalStep('approval'))
         
         
