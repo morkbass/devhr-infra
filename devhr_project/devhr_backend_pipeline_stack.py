@@ -42,4 +42,7 @@ class DevhrBackendPipelineStack(Stack):
          
         devStage.add_pre(pipelines.ManualApprovalStep('approval'))
         
+        prodStage = pipeline.add_stage(DevhrPipelineStage(self, "prod"))
+         
+
         
